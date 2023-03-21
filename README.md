@@ -50,3 +50,8 @@ client.getEntries()
 .then((response) => console.log(response.items))
 .catch(console.error)
 ```
+
+# 参考
+
+- https://zenn.dev/tsuboi/articles/3f587ff792e68c
+- https://zenn.dev/tsuboi/articles/a7e860b6347df0
