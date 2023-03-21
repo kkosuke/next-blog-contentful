@@ -5,7 +5,7 @@ import { Entry } from "contentful";
 import Link from "next/link";
 import { XIcon } from "@heroicons/react/solid";
 
-export const BlogCard: NextPage<{ item: Entry<IFields> }> = ({ item }) => {
+export const BlogCard: NextPage<{ item: Entry<any> }> = ({ item }) => {
   const [showDetail, setShowDetail] = useState(false);
   return (
     <>
@@ -46,7 +46,7 @@ export const BlogCard: NextPage<{ item: Entry<IFields> }> = ({ item }) => {
             </Link>
             <div className="flex items-center text-sm">
               {item.fields.type &&
-                item.fields.type.map((tech) => (
+                item.fields.type.map((tech: any) => (
                   <span key={tech} className="px-2 py-1 my-1 text-subtext">
                     [{tech}]
                   </span>

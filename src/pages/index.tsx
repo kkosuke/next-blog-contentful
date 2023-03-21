@@ -8,12 +8,13 @@ import { BlogCard } from "@/conponents/card/BlogCard";
 import { BlogNavbar } from "@/conponents/sidebar/BlogNavbar";
 
 export const getStaticProps = async () => {
-  const client = createClient({
+  const config: any = {
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  });
+  };
+  const client = createClient(config);
 
-  const response: EntryCollection<IFields> = await client.getEntries({
+  const response: EntryCollection<any> = await client.getEntries({
     content_type: "blog",
   });
 
@@ -30,7 +31,7 @@ const Home: NextPage<Props> = ({ article }) => {
   const [articles, setArticles] = useState(article);
   const [active, setActive] = useState("");
 
-  const handlerFilterCategory = (category: Category) => {
+  const handlerFilterCategory = (category: any) => {
     if (category === "") {
       setArticles(article);
       setActive(category);

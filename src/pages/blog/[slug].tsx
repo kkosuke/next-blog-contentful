@@ -10,14 +10,15 @@ import { Layout } from "@/conponents/layout/Layout";
 import Image from "next/image";
 import Link from "next/link";
 
-const config = {
+const config: any = {
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 };
+
 const client = createClient(config);
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res: EntryCollection<IResponse> = await client.getEntries({
+  const res: EntryCollection<any> = await client.getEntries({
     content_type: "blog",
   });
 
@@ -32,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const { items } = await client.getEntries({
     content_type: "blog",
     "fields.slug": params.slug,
